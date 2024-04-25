@@ -1,0 +1,9 @@
+Hex color for Revenge of the Sith
+
+Black: #97CFF4
+Dark Grey: #494446
+Orange: #B84509
+Grey: #72787D
+Cream: #BAA79A
+Light Grey: #E6E2DF
+
