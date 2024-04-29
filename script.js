@@ -61,9 +61,59 @@ resetBtn.addEventListener("click", () => {
     location.reload();
 });
 
+//Fighting section, includes variables with the different fighters
+const fighterRock = 
+`<div class="card-fighters rounded-4 fighterContainer">
+    <img src="images/rock.jpg" class="card-img-top rounded-top-4" alt="Rock image that looks like Arturitu  tututuuu">
+    <div class="card-body">
+        <h5 class="card-title text-center text-white fs-4">Rock</h5>
+    </div>
+</div>`;
+
+const fighterPaper = 
+`<div class="card-fighters rounded-4 fighterContainer">
+    <img src="images/Paper.jpg" class="card-img-top rounded-top-4" alt="...">
+    <div class="card-body">
+        <h5 class="card-title text-center text-white fs-4">Paper</h5>
+    </div>
+</div>`;
+const fighterScissor = 
+`   <div class="card-fighters rounded-4 fighterContainer">
+    <img src="images/scissors.jpg" class="card-img-top rounded-top-4" alt="...">
+        <div class="card-body  text-center">
+            <h5 class="card-title text-white fs-4">Scissor</h5>
+        </div>
+    </div>`;
+
+const playerSelection = () => {
+    if(chosenFighter === "rock"){
+        return fighterRock;
+    }
+    if(chosenFighter === "paper"){
+        return fighterPaper;
+    }
+    if(chosenFighter === "scissors"){
+        return fighterScissor;
+    }
+}
+
 fightBtn.addEventListener("click", () =>{
     stageOneContainer.classList.replace('d-flex', 'd-none');
     stageTwoContainer.classList.replace('d-none', 'd-flex');
+    stageTwoContainer.innerHTML = `
+    <div class="main-title fs-1 text-center m-3">
+        <h1>Fighting!!!</h1>
+    </div>
+    <div class="luchadores d-flex justify-content-around align-items-center">
+    
+        ${playerSelection()} 
+    
+        <div class="vs-title fs-1 text-center">
+            <h1>VS</h1>
+        </div> 
+    
+        ${fighterPaper}
+    </div>`
     console.log(chosenFighter)
 });
 
