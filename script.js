@@ -31,7 +31,7 @@ function hoverOut(hoverElem){
 }
 
 //figter variable selection
-let chosenFighter = 'paper';
+let chosenFighter;
 
 
 function selectedFighter(selected){
@@ -44,13 +44,17 @@ const fightBtn = document.getElementById("fight");
 const resetBtn = document.getElementById("reset");
 
 selectBtn.addEventListener("click", () =>{
-    selectBtn.style.transition = "all 1s";
+    if(chosenFighter != undefined){
+        selectBtn.style.transition = "all 1s";
     selectBtn.style.opacity = '0'
     setTimeout(function(){
         selectBtn.classList.replace("d-inline", "d-none");
         fightBtn.classList.replace("d-none", "d-inline");
         
     },1500)
+    }else{
+        alert("Please select a fighter")
+    }
 });
 
 resetBtn.addEventListener("click", () => {
@@ -60,5 +64,6 @@ resetBtn.addEventListener("click", () => {
 fightBtn.addEventListener("click", () =>{
     stageOneContainer.classList.replace('d-flex', 'd-none');
     stageTwoContainer.classList.replace('d-none', 'd-flex');
+    console.log(chosenFighter)
 });
 
