@@ -2,6 +2,7 @@
 //main container
 const stageOneContainer = document.getElementById("stage1");
 const stageTwoContainer = document.getElementById("stage2");
+const stageThreeContainer = document.getElementById("stage3");
 
 //fighters container
 const itemsCont = document.getElementById("fightersContainers");
@@ -40,7 +41,7 @@ function selectedFighter(selected) {
 // btn funtionality
 const selectBtn = document.getElementById("selector");
 const fightBtn = document.getElementById("fight");
-const resetBtn = document.getElementById("reset");
+//const resetBtn = document.getElementById("reset");
 
 selectBtn.addEventListener("click", () => {
   if (chosenFighter != undefined) {
@@ -55,9 +56,12 @@ selectBtn.addEventListener("click", () => {
   }
 });
 
-resetBtn.addEventListener("click", () => {
-  location.reload();
-});
+// resetBtn.addEventListener("click", () => {
+//   location.reload();
+// });
+function reset (){
+    location.reload();
+}
 
 //Fighting section, includes variables with the different fighters
 const fighterRock = `<div class="card-fighters rounded-4 fighterContainer">
@@ -73,12 +77,22 @@ const fighterPaper = `<div class="card-fighters rounded-4 fighterContainer">
         <h5 class="card-fighter-title text-center text-white fs-4">Paper</h5>
     </div>
 </div>`;
-const fighterScissor = `   <div class="card-fighters rounded-4 fighterContainer">
+const fighterScissor = `<div class="card-fighters rounded-4 fighterContainer">
     <img src="images/scissors.jpg" class="card-img-top rounded-top-4" alt="...">
         <div class="card-body  text-center">
             <h5 class="card-fighter-title text-white fs-4">Scissor</h5>
         </div>
     </div>`;
+
+//winning rules section including player status
+
+const rules ={
+    "scissors": "paper",
+    "paper" : "rock",
+    "rock" : "scissors"
+}
+let winner = false;
+
 
 // function that return the chossenFighter into the variables with the html container
 
@@ -114,6 +128,9 @@ const cpuSection = () => {
   }
 };
 
+// stage 3 content
+
+
 fightBtn.addEventListener("click", () => {
   stageOneContainer.classList.replace("d-flex", "d-none");
   stageTwoContainer.classList.replace("d-none", "d-flex");
@@ -131,8 +148,53 @@ fightBtn.addEventListener("click", () => {
     
         ${cpuSection()}
     </div>`;
-  console.log(randomizer);
+
+    
+
+
   setTimeout(() => {
     stageTwoContainer.classList.replace("d-flex", "d-none");
+    stageThreeContainer.classList.replace("d-none", "d-flex");
+    test()
   }, 500);
 });
+
+function test() {
+    if(chosenFighter === cpuFighter){
+        stageThreeContainer.innerHTML = `<div class="main-title fs-1 text-center m-3">
+        <h1>A draw, it is. Much balance, I sense. Wise choice, continue we shall.</h1>
+    </div>
+    <div class="card-result rounded-4 fighterContainer">
+    <img src="images/yoda-Draw.webp" class="card-img-top rounded-top-4" alt="...">
+        <div class="card-body  text-center">
+        <button type="button" class="btn w-25 m-5  fs-4 fw-bolder " id="reset" onClick="reset()">
+            Reset
+        </button>
+        </div>
+    </div>`
+    }else if(cpuFighter === rules[chosenFighter]){
+        stageThreeContainer.innerHTML = `<div class="main-title fs-1 text-center m-3">
+        <h1>Victory, you have. Triumphant, you stand. The Force, strong with you, it is.</h1>
+    </div>
+    <div class="card-result rounded-4 fighterContainer">
+    <img src="images/yoda-feliz.webp" class="card-img-top rounded-top-4" alt="...">
+        <div class="card-body  text-center">
+        <button type="button" class="btn w-25 m-5  fs-4 fw-bolder " id="reset" onClick="reset()">
+            Reset
+        </button>
+        </div>
+    </div>`
+    }else{
+        stageThreeContainer.innerHTML = `<div class="main-title fs-1 text-center m-3">
+        <h1>Lost, you have. Learn from this, you must. Try again, you will.</h1>
+    </div>
+    <div class="card-result rounded-4 fighterContainer">
+    <img src="images/yoda-triste.jpg" class="card-img-top rounded-top-4" alt="...">
+        <div class="card-body  text-center">
+        <button type="button" class="btn w-25 m-5  fs-4 fw-bolder " id="reset" onClick="reset()">
+            Reset
+        </button>
+        </div>
+    </div>`
+    }
+}
