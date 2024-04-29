@@ -40,6 +40,20 @@ body {
     
 }
 
+.fighting-container{
+  width: 80%;
+  margin: 5rem auto; 
+  justify-content: space-between;
+}
+.card-fighters{
+  width: 40%;
+  border: solid 3px #ffe81f;
+
+}
+.card-fighter-title{
+  padding: 2rem;
+}
+
 
 /* breakpoints
 lg > 920x
@@ -47,10 +61,7 @@ md > 768px
 sm > 576px
 xs < 576px
 */
-/* media query 
-md > 768px
-.card =>  margin: 1rem; width: 60%;
-*/
+
 
 /* Media queries section */
 /* large screens*/
