@@ -5,14 +5,12 @@ body {
   height: 100%;
 }
 .content-container {
-  padding: 5rem;
-  width: 75%;
   border: solid 3px #ffe81f;
-  margin-top: 5rem;
+  margin-top: 10rem;
   height: 720px;
 }
 .card {
-  margin: 3rem;
+  margin: 1rem 2rem;
   border: solid 3px #ffe81f;
   background-color: transparent !important;
   cursor: pointer;
@@ -23,12 +21,11 @@ body {
   background-color: #b84509 !important;
 }
 .navbar {
-  position: absolute;
-  bottom: 0;
+  /* bottom: 0; */
   background-color: #ffe81f;
-  width: 100%;
-  color: #0a0a0a;
-
+  /* width: 100%; */
+  /* color: #0a0a0a; */
+  /* margin-top: 10rem; */
 }
 .active{
     -webkit-box-shadow: 2px 7px 30px 19px rgba(255,232,31,1);
@@ -45,4 +42,17 @@ body {
 
 #selector{
     opacity: 1;
+    
 }
+
+
+/* breakpoints
+lg > 920x
+md > 768px
+sm > 576px
+xs < 576px
+*/
+/* media query 
+md > 768px
+.card =>  margin: 1rem; width: 60%;
+*/
