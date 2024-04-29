@@ -6,7 +6,7 @@ body {
 }
 .content-container {
   border: solid 3px #ffe81f;
-  margin-top: 10rem;
+  margin-top: 5rem;
   margin-bottom: 50rem;
 }
 .card {
@@ -39,6 +39,9 @@ body {
     opacity: 1;
     
 }
+#stage2{
+  opacity: 1;
+}
 
 .fighting-container{
   width: 80%;
@@ -55,7 +58,8 @@ body {
 }
 
 .card-result{
-  
+  width: 60%;
+  margin: 3rem auto 0;
 }
 
 /* breakpoints

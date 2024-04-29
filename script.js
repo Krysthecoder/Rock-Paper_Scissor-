@@ -156,7 +156,7 @@ fightBtn.addEventListener("click", () => {
     stageTwoContainer.classList.replace("d-flex", "d-none");
     stageThreeContainer.classList.replace("d-none", "d-flex");
     test()
-  }, 500);
+  }, 3500);
 });
 
 function test() {
