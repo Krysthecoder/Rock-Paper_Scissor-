@@ -62,14 +62,6 @@ body {
   margin: 3rem auto 0;
 }
 
-/* breakpoints
-lg > 920x
-md > 768px
-sm > 576px
-xs < 576px
-*/
-
-
 /* Media queries section */
 /* large screens*/
 @media(min-width: 920px){
