@@ -1,12 +1,15 @@
 //dom capture into variables
 //main container
-const stageOneContainer = document.getElementById("stage1");
-const stageTwoContainer = document.getElementById("stage2");
-const stageThreeContainer = document.getElementById("stage3");
+const stage1 = document.getElementById("stage1");
+const stage2 = document.getElementById("stage2");
+const stage3 = document.getElementById("stage3");
+const msgAlert = document.getElementById("msgAlert");
 
 //fighters container
 const itemsCont = document.getElementById("fightersContainers");
 const items = itemsCont.getElementsByClassName("fighterContainer");
+
+
 
 //iteration that allows to click on diff items and show them as selected
 for (let i = 0; i < items.length; i++) {
@@ -21,46 +24,49 @@ for (let i = 0; i < items.length; i++) {
 function hoverIn(hoverElem) {
   hoverElem.style.border = "solid 3px #b84509";
   hoverElem.style.transition = ".5s";
-  hoverElem.classList.remove("none");
-  hoverElem.classList.add("hovered");
+  hoverElem.classList.replace("none", "hovered");
+  // hoverElem.classList.add();
 }
 function hoverOut(hoverElem) {
   hoverElem.style.border = "solid 3px #ffe81f";
-  hoverElem.classList.remove("hovered");
-  hoverElem.classList.add("none");
+  hoverElem.classList.replace("hovered", "none");
+  // hoverElem.classList.add();
 }
 
 //figter variable selection
-let chosenFighter;
-let cpuFighter;
+let chosenFighter = '';
+let cpuFighter = '';
 
 function selectedFighter(selected) {
   chosenFighter = selected;
 }
 
-// btn funtionality
+
+//btn funtionality
 const selectBtn = document.getElementById("selector");
-const fightBtn = document.getElementById("fight");
+const fightBtn = document.getElementById("fightBtn");
+
 //const resetBtn = document.getElementById("reset");
 
 selectBtn.addEventListener("click", () => {
-  if (chosenFighter != undefined) {
+  if (!chosenFighter ) { ///!chosenFighter => chosenFighter != undefined or empty ''
+    //alert("Please select a fighter"); 
+    msgAlert.innerText = "Please select a fighter";
+  } else {
     selectBtn.style.transition = "all 1s";
     selectBtn.style.opacity = "0";
     setTimeout(function () {
       selectBtn.classList.replace("d-inline", "d-none");
       fightBtn.classList.replace("d-none", "d-inline");
     }, 1000);
-  } else {
-    alert("Please select a fighter");
   }
 });
 
 // resetBtn.addEventListener("click", () => {
 //   location.reload();
 // });
-function reset (){
-    location.reload();
+function reset() {
+  location.reload();
 }
 
 //Fighting section, includes variables with the different fighters
@@ -86,13 +92,13 @@ const fighterScissor = `<div class="card-fighters rounded-4 fighterContainer">
 
 //winning rules section including player status
 
-const rules ={
-    "scissors": "paper",
-    "paper" : "rock",
-    "rock" : "scissors"
-}
-let winner = false;
+const rules = {
+  scissors: "paper",
+  paper: "rock",
+  rock: "scissors",
+};
 
+let winner = false;
 
 // function that return the chossenFighter into the variables with the html container
 
@@ -128,13 +134,13 @@ const cpuSection = () => {
   }
 };
 
-// stage 3 content
+// stage 2 content
 
 
-fightBtn.addEventListener("click", () => {
-  stageOneContainer.classList.replace("d-flex", "d-none");
-  stageTwoContainer.classList.replace("d-none", "d-flex");
-  stageTwoContainer.innerHTML = `
+fightBtn.addEventListener("click", () => { 
+  stage1.classList.replace("d-flex", "d-none");
+  stage2.classList.replace("d-none", "d-flex");
+  stage2.innerHTML = `
     <div class="main-title fs-1 text-center m-3">
         <h1>Fighting!!!</h1>
     </div>
@@ -149,19 +155,16 @@ fightBtn.addEventListener("click", () => {
         ${cpuSection()}
     </div>`;
 
-    
-
-
   setTimeout(() => {
-    stageTwoContainer.classList.replace("d-flex", "d-none");
-    stageThreeContainer.classList.replace("d-none", "d-flex");
-    test()
-  }, 3500);
+    stage2.classList.replace("d-flex", "d-none");
+    stage3.classList.replace("d-none", "d-flex");
+    stage3Display();
+  }, 3000);
 });
 
-function test() {
-    if(chosenFighter === cpuFighter){
-        stageThreeContainer.innerHTML = `<div class="main-title fs-1 text-center m-3">
+function stage3Display() {
+  if (chosenFighter === cpuFighter) {
+    stage3.innerHTML = `<div class="main-title fs-1 text-center m-3">
         <h1>A draw, it is. Much balance, I sense. Wise choice, continue we shall.</h1>
     </div>
     <div class="card-result rounded-4 fighterContainer">
@@ -171,9 +174,9 @@ function test() {
             Reset
         </button>
         </div>
-    </div>`
-    }else if(cpuFighter === rules[chosenFighter]){
-        stageThreeContainer.innerHTML = `<div class="main-title fs-1 text-center m-3">
+    </div>`;
+  } else if (cpuFighter === rules[chosenFighter]) {
+    stage3.innerHTML = `<div class="main-title fs-1 text-center m-3">
         <h1>Victory, you have. Triumphant, you stand. The Force, strong with you, it is.</h1>
     </div>
     <div class="card-result rounded-4 fighterContainer">
@@ -183,18 +186,18 @@ function test() {
             Reset
         </button>
         </div>
-    </div>`
-    }else{
-        stageThreeContainer.innerHTML = `<div class="main-title fs-1 text-center m-3">
+    </div>`;
+  } else {
+    stage3.innerHTML = `<div class="main-title fs-1 text-center m-3">
         <h1>Lost, you have. Learn from this, you must. Try again, you will.</h1>
     </div>
     <div class="card-result rounded-4 fighterContainer">
     <img src="images/yoda-triste.jpg" class="card-img-top rounded-top-4" alt="...">
         <div class="card-body  text-center">
-        <button type="button" class="btn w-25 m-5  fs-4 fw-bolder " id="reset" onClick="reset()">
+        <button type="button" class="btn m-5  fs-4 fw-bolder " id="reset" onClick="reset()">
             Reset
         </button>
         </div>
-    </div>`
-    }
+    </div>`;
+  }
 }

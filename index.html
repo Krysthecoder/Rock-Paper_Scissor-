@@ -13,12 +13,10 @@
 <body class="background d-flex flex-column justify-content-between">
 
     <!-- Stage one content  -->
-    <div class="container content-container d-flex flex-column justify-content-evenly text-white rounded-4" id="stage1">
+    <div class="container content-container d-flex flex-column justify-content-evenly text-white rounded-4" 
+        id="stage1">
 
-
-        <div class="main-title fs-1 text-center m-3">
-            Selecciona tu luchador!
-        </div>
+        <h1 class="main-title fs-1 text-center my-5 text-uppercase">Selecciona tu luchador!</h1>
 
         <div class="luchadores row justify-content-center" id="fightersContainers">
 
@@ -49,17 +47,19 @@
             </div>
         </div>
 
+        <h1 class="main-title fs-1 text-center mt-5 text-warning" id="msgAlert"></h1>
+
         <div class="container-fluid text-center">
 
-            <button type="button" class="btn w-25  m-5 fs-4 fw-bolder d-inline" id="selector">
+            <button type="button" class="btn m-5 fs-4 fw-bolder d-inline" id="selector">
                 Select
             </button>
 
-            <button type="button" class="btn w-25 m-5  fs-4 fw-bolder d-none" id="fight">
+            <button type="button" class="btn m-5  fs-4 fw-bolder d-none" id="fightBtn">
                 Fight
             </button>
 
-            <button type="button" class="btn w-25 m-5  fs-4 fw-bolder " id="reset">
+            <button type="button" class="btn m-5  fs-4 fw-bolder " id="reset" onclick="reset()">
                 Reset
             </button>
 
@@ -75,8 +75,9 @@
     </div>
 
     <!-- stage 3 container -->
-    <div class="container content-container d-flex flex-column justify-content-evenly text-white rounded-4 d-none" id="stage3">
-        
+    <div class="container content-container d-flex flex-column justify-content-evenly text-white rounded-4 d-none"
+        id="stage3">
+
     </div>
 
 
@@ -100,4 +101,5 @@
         crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
